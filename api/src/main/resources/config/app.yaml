@@ -1,0 +1,28 @@
+
+environment:
+  type: !spec
+    description: Defines the environment type for this installation. This drives the selection
+      of env_{}.yaml in the overlay process.
+    type: !!str ""
+    value: !required "cluster.yaml"
+    examples: [dev, qa, staging, prod]
+
+app:
+  name: !spec
+    description: Application name
+    type: !!str ""
+    value: restdemo
+
+statsd:
+  host: !spec
+    description: IP/hostname of the statsd agent.
+    type: !!str ""
+    value: !required "cluster.yaml"
+  port: !spec
+    description: Port of the statsd agent (for UDP).
+    type: !!int "0"
+    value: 8125
+  sample_rate: !spec
+    description: sample rate (value between 0,1)
+    type: !!float "0"
+    value: 1.0
