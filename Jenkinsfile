@@ -8,7 +8,7 @@ node {
       
    stage 'Build'
 
-   maven35.inside(
+   maven35.inside() {
 	   checkout scm
        sh 'mvn -B -s jenkins-settings.xml clean install'
    }
