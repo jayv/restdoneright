@@ -18,7 +18,7 @@ class DemoServer extends DemoResource with Logging {
   @PostConstruct
   def start(): Unit = {
     web.start()
-    logger.info("REST Demo server started")
+    logger.info("REST Demo server started - Woop woop!")
   }
 
   def status(): StatusModel = {
