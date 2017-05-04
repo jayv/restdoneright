@@ -4,7 +4,7 @@ node {
    
    stage 'Pull build image'
    
-   maven35.pull()
+   //maven35.pull()
       
    stage 'Build'
 
