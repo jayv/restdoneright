@@ -8,20 +8,21 @@ node {
       
    stage 'Build'
 
-	sh 'export'
-  	
-   	environment {
-	   M2_PWD = credentials('M2_PWD')
-	}
-  	
-  	sh 'export'
-
-
    maven35.inside() {
-   	
-   	
+
 	   checkout scm
-       sh 'mvn -B -s jenkins-settings.xml clean install'
+   	
+   	 	withCredentials(
+                [
+                    [$class: 'StringBinding', credentialsId: 'M2_PWD', variable: 'M2_PWD']
+                ]) {
+ 
+			sh 'export'
+
+			sh 'mvn -B -s jenkins-settings.xml clean install'
+
+        }
+
    }
   
 }
