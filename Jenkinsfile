@@ -8,15 +8,17 @@ node {
       
    stage 'Build'
 
+	sh 'export'
+  	
+   	environment {
+	   M2_PWD = credentials('M2_PWD')
+	}
+  	
+  	sh 'export'
+
+
    maven35.inside() {
    	
-   		sh 'export'
-   	
-	   	environment {
-		   M2_PWD = credentials('M2_PWD')
-		}
-   	
-   	   	sh 'export'
    	
 	   checkout scm
        sh 'mvn -B -s jenkins-settings.xml clean install'
